@@ -46,4 +46,7 @@ Theftband::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  # Compass/Sass -- don't update in production
+  Sass::Plugin.options[:never_update] = true
 end
