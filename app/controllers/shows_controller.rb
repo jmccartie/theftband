@@ -22,7 +22,7 @@ class ShowsController < ApplicationController
     @show = Show.new(params[:show])
 
     if @show.save
-      redirect_to(@show, :notice => 'Show was successfully created.')
+      redirect_to(shows_url, :notice => 'Show was successfully created.')
     else
       render :action => "new"
     end
@@ -33,7 +33,7 @@ class ShowsController < ApplicationController
     @show = Show.find(params[:id])
 
     if @show.update_attributes(params[:show])
-      redirect_to(@show, :notice => 'Show was successfully updated.')
+      redirect_to(shows_url, :notice => 'Show was successfully updated.')
     else
       render :action => "edit"
     end
