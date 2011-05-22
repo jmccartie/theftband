@@ -1,4 +1,4 @@
 %tr
   %td= show.date
   %td= show.location
-  %td= link_to show.venue, show.link
+  %td= (show.link.nil?) ? show.venue : link_to(show.venue, show.link)
