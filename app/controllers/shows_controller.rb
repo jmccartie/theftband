@@ -3,8 +3,8 @@ class ShowsController < ApplicationController
 
   # GET /shows
   def index
-    @upcoming_shows = Show.where("date > ?", Date.yesterday).limit(50)
-    @past_shows = Show.where("date < ?", Date.today).limit(50)
+    @upcoming_shows = Show.where("date > ?", Date.yesterday).order("date ASC").limit(50)
+    @past_shows = Show.where("date < ?", Date.today).order("date DESC").limit(50)
   end
 
   # GET /shows/new

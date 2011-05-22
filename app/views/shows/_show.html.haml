@@ -1,4 +1,7 @@
 %tr
   %td= show.date
   %td= show.location
-  %td= (show.link.nil?) ? show.venue : link_to(show.venue, show.link)
+  %td
+    = (show.link.nil?) ? show.venue : link_to(show.venue, show.link)
+    - if user_signed_in?
+      = link_to "(Edit)", edit_show_path(show)
