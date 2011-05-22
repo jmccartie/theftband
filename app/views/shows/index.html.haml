@@ -1,0 +1,17 @@
+%h1 Upcoming Shows
+%table
+  %tr
+    %th Date
+    %th City
+    %th Venue
+
+  = render :partial => "show", :collection => @upcoming_shows
+
+%h1 Past Shows
+%table
+  %tr
+    %th Date
+    %th City
+    %th Venue
+
+  = render :partial => "show", :collection => @past_shows
