@@ -1,13 +1,12 @@
 class UpdatesController < ApplicationController
   before_filter :authenticate_user!, except: %w[index show]
-  
+
   # GET /updates
   def index
-    @updates = Update.limit(5).page(params[:page])
+    @updates = Update.page(params[:page]).per(5)
   end
 
   # GET /updates/1
-  # GET /updates/1.xml
   def show
     @update = Update.find(params[:id])
   end
@@ -27,42 +26,29 @@ class UpdatesController < ApplicationController
   def create
     @update = Update.new(params[:update])
 
-    respond_to do |format|
-      if @update.save
-        format.html { redirect_to(@update, :notice => 'Update was successfully created.') }
-        format.xml  { render :xml => @update, :status => :created, :location => @update }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @update.errors, :status => :unprocessable_entity }
-      end
+    if @update.save
+      redirect_to(@update, :notice => 'Update was successfully created.')
+    else
+      render :action => "new"
     end
   end
 
   # PUT /updates/1
-  # PUT /updates/1.xml
   def update
     @update = Update.find(params[:id])
 
-    respond_to do |format|
-      if @update.update_attributes(params[:update])
-        format.html { redirect_to(@update, :notice => 'Update was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @update.errors, :status => :unprocessable_entity }
-      end
+    if @update.update_attributes(params[:update])
+      redirect_to(@update, :notice => 'Update was successfully updated.')
+    else
+      render :action => "edit"
     end
+
   end
 
   # DELETE /updates/1
-  # DELETE /updates/1.xml
   def destroy
     @update = Update.find(params[:id])
     @update.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(updates_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(updates_url)
   end
 end

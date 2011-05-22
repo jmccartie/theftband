@@ -1,12 +1,4 @@
-%p#notice= notice
-
-%p
-  %b Title:
-  = @update.title
-%p
-  %b Content:
-  = @update.content
-
-= link_to 'Edit', edit_update_path(@update)
-\|
-= link_to 'Back', updates_path
+%h2= @update.title
+%p.date= "#{time_ago_in_words(@update.created_at)} ago"
+%p!= @update.content
+%p= link_to "permalink", update_path(@update)

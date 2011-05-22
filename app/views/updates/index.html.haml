@@ -1,6 +1,6 @@
 - @updates.each do |update|
   %h2= update.title
   %p.date= "#{time_ago_in_words(update.created_at)} ago"
-  %p= truncate(update.content, :length => 500)
+  %p!= update.content
   %p= link_to "permalink", update_path(update)
 = paginate @updates
