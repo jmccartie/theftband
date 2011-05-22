@@ -8,6 +8,8 @@ gem 'compass-960-plugin'
 
 gem 'kaminari'
 
+gem 'rake', '0.8.7'
+
 gem 'pg'
 
 gem "haml-rails"
