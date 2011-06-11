@@ -16,10 +16,10 @@
         })();
   %body
     #wrap
-      #header
-        %h1= link_to "theft", root_path
-      #main= yield
-      #footer
+      - if request.path != root_path
+        #header
+          %h1= link_to "theft", root_path
+      #nav
         %ul
           %li= link_to_unless_current "home", root_path
           %li= link_to_unless_current "shows", shows_path
@@ -29,3 +29,6 @@
           %li= link_to_unless_current "supported", supported_path
           %li= link_to "facebook", "http://facebook.com/theftspace"
           %li= link_to "twitter", "http://twitter.com/theft"
+      #main= yield
+      #footer
+        %p!= "&copy; #{Time.now.year} theft"

@@ -46,7 +46,8 @@ dd
   padding-left: 15px
 
 p
-  font-size: 9pt
+  font-size: 16px
+  line-height: 32px
 
 a
   color: #6598b8
@@ -75,7 +76,6 @@ code
 strong
   font-size: 110%
 
-
 #wrap
   +grid-container
 
@@ -97,17 +97,33 @@ strong
     #band_photo
       text-align: center
 
-  #footer
+    p
+      background-color: #333
+      padding: 10px
+
+    h2
+      margin-bottom: 20px
+
+  #nav
     +grid(12)
-    padding-top: 10px
+    margin-top: 10px
+    border-bottom: 1px solid #ccc
     border-top: 1px solid #ccc
+    margin-bottom: 20px
     text-align: center
+    width: 1024px
+    padding: 0
 
     ul
+      margin: 10px 0
+
       li
         display: inline
         margin-right: 15px
         font-size: 18px
+
+  #footer
+    text-align: center
 
 
 table
